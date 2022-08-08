@@ -10,7 +10,7 @@ int main(){
 
     printf("BMI: %f\n", bmi);
 
-    float p = 2.5;
+    float p = 2.5f;
     float heightPower = powf(height, p);
     float bmiNew = 1.3 * mass / heightPower;
     printf("New BMI: %f\n", bmiNew);
