@@ -1,0 +1,7 @@
+Sort and find biggest number:
+cat numbers.txt | sort -n | head -n 1
+
+Sort and find smallest number
+cat numbers.txt | sort -n -r | head -n 1 
+or
+cat numbers.txt | sort -n | tail -n 1
