@@ -7,11 +7,11 @@ void flipBit(uint64_t* mask, unsigned bit);
 int checkBit(uint64_t mask, unsigned bit);
 void printAttendancies(uint64_t mask);
 
+
 int main(){
     uint64_t attendancies = 0;
     int option;
     unsigned student;
-    // TODO - add validations for invalid option or student number
 
     printf("1. Set attendance\n");
     printf("2. Clear attendance\n");
@@ -29,13 +29,19 @@ int main(){
         {
             printf("Enter student number: ");
             scanf("%u", &student);
-            setBit(&attendancies, student);
+            if (student < 0 || student > 63)
+                printf("Student number must be between 0 and 63");
+            else
+                setBit(&attendancies, student);
         }
         else if (option == 2)
         {
             printf("Enter student number: ");
             scanf("%u", &student);
-            clearBit(&attendancies, student);
+            if (student < 0 || student > 63)
+                printf("Student number must be between 0 and 63");
+            else
+                clearBit(&attendancies, student);
         }
         else if (option == 3)
         {
@@ -45,7 +51,12 @@ int main(){
         {
             printf("Enter student number: ");
             scanf("%u", &student);
-            flipBit(&attendancies, student);
+            if (student < 0 || student > 63)
+                printf("Student number must be between 0 and 63\n");
+            else
+                flipBit(&attendancies, student);
+        } else {
+            printf("Invalid option\n");
         }
         printf("Choose another option: ");
         scanf("%d", &option);
@@ -72,7 +83,7 @@ int checkBit(uint64_t mask, unsigned bit) {
 
 void printAttendancies(uint64_t mask) {
     for (int i = 0; i <= 63; i++) {
-        printf("Student #%d: %d\n", (i+1), checkBit(mask, i));
+        printf("Student #%d: %d\n", i, checkBit(mask, i));
     }
     putchar('\n');
 }
