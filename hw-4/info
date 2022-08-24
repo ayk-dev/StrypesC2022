@@ -1,3 +1,9 @@
 Homework #4:
 
 - Problem 1 - create a function int secondMax;
+
+- Problem 2 - create a function to calculate sum of array digits;
+
+- Problem 3 - strings functions:
+  - strlen
+  - strnlen
