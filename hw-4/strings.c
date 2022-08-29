@@ -2,6 +2,7 @@
 
 size_t strlen(char *str);
 size_t strnlen(char *str, size_t maxlen);
+char *strcpy(char *dest, const char *src);
 
 int main() {
     char string[] = "Hello World!";
@@ -13,7 +14,9 @@ int main() {
     printf("String length with max length %ld: %ld\n", ml, strnlen(string, ml));
     printf("String length with max length %ld: %ld\n", ml2, strnlen(string, ml2));
     
-
+    char copyStr[50];
+    printf("%s\n", strcpy(copyStr, string));
+    
     return 0;
 }
  
@@ -35,3 +38,16 @@ size_t strnlen(char *str, size_t maxlen) {
     return res;
 }
 
+char *strcpy(char *dest, const char *src) {
+    if (dest == NULL)
+        return NULL;
+
+    char *ptr = dest;
+    while (*src != '\0') {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = '\0';
+    return ptr;
+}
