@@ -3,6 +3,7 @@
 size_t strlen(char *str);
 size_t strnlen(char *str, size_t maxlen);
 char *strcpy(char *dest, const char *src);
+char *strncpy(char *dest, const char *src, size_t n);
 
 int main() {
     char string[] = "Hello World!";
@@ -16,6 +17,9 @@ int main() {
     
     char copyStr[50];
     printf("%s\n", strcpy(copyStr, string));
+
+    char copyStr2[10];
+    printf("%s\n", strncpy(copyStr2, string, 5));
     
     return 0;
 }
@@ -41,7 +45,6 @@ size_t strnlen(char *str, size_t maxlen) {
 char *strcpy(char *dest, const char *src) {
     if (dest == NULL)
         return NULL;
-
     char *ptr = dest;
     while (*src != '\0') {
         *dest = *src;
@@ -50,4 +53,15 @@ char *strcpy(char *dest, const char *src) {
     }
     *dest = '\0';
     return ptr;
+}
+
+char *strncpy(char *dest, const char *src, size_t n) {
+    if (dest == NULL)
+        return NULL;
+    size_t i;
+    for (i = 0; i < n && src[i] != '\0'; i++)
+        dest[i] = src[i];
+    for ( ; i < n; i++)
+        dest[i] = '\0';
+    return dest;
 }
