@@ -6,6 +6,8 @@ char *strcpy(char *dest, const char *src);
 char *strncpy(char *dest, const char *src, size_t n);
 char *strcat(char *dest, const char *src);
 char *strncat(char *dest, const char *src, size_t n);
+int strcmp(const char *s1, const char *s2);
+int strncmp(const char *s1, const char *s2, size_t n);
 
 int main() {
     char string[] = "Hello World!";
@@ -26,7 +28,12 @@ int main() {
     printf("Concat strings: %s\n", strcat(copyStr, copyStr2));
 
     printf("Concat n bytes: %s\n", strncat(copyStr, copyStr2, 3));
-    
+
+    printf("%d\n", strcmp(copyStr2, copyStr));
+    printf("%d\n", strcmp("Hello", "Hello"));
+
+    printf("%d\n", strncmp(copyStr2, copyStr, 7));
+
     return 0;
 }
  
@@ -88,5 +95,25 @@ char *strncat(char *dest, const char *src, size_t n) {
         dest[dest_len + i] = src[i];
     dest[dest_len + i] = '\0';
     return dest;
+}
+
+int strcmp(const char *s1, const char *s2) {
+    while (*s1 && (*s1 == *s2)) {
+        s1++;
+        s2++;
+    }
+    return *s1 - *s2;
+}
+
+int strncmp(const char *s1, const char *s2, size_t n) {
+    while (n && *s1 && (*s1 == *s2)) {
+        s1++;
+        s2++;
+        n--;
+    }
+    if (n == 0)
+        return 0;
+    else
+        return *s1 - *s2;
 }
 
