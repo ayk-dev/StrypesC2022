@@ -4,6 +4,8 @@ size_t strlen(char *str);
 size_t strnlen(char *str, size_t maxlen);
 char *strcpy(char *dest, const char *src);
 char *strncpy(char *dest, const char *src, size_t n);
+char *strcat(char *dest, const char *src);
+char *strncat(char *dest, const char *src, size_t n);
 
 int main() {
     char string[] = "Hello World!";
@@ -20,6 +22,10 @@ int main() {
 
     char copyStr2[10];
     printf("%s\n", strncpy(copyStr2, string, 5));
+
+    printf("Concat strings: %s\n", strcat(copyStr, copyStr2));
+
+    printf("Concat n bytes: %s\n", strncat(copyStr, copyStr2, 3));
     
     return 0;
 }
@@ -65,3 +71,22 @@ char *strncpy(char *dest, const char *src, size_t n) {
         dest[i] = '\0';
     return dest;
 }
+
+char *strcat(char *dest, const char *src) {
+    size_t dest_len = strlen(dest);
+    size_t i;
+    for (i = 0; i < strlen(src); i++)
+        dest[dest_len + i] = src[i];
+    dest[dest_len + i] = '\0';
+    return dest;
+}
+
+char *strncat(char *dest, const char *src, size_t n) {
+    size_t dest_len = strlen(dest);
+    size_t i;
+    for (i = 0; i < n && src[i] != '\0'; i++)
+        dest[dest_len + i] = src[i];
+    dest[dest_len + i] = '\0';
+    return dest;
+}
+
