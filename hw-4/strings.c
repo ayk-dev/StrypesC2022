@@ -8,8 +8,10 @@ char *strcat(char *dest, const char *src);
 char *strncat(char *dest, const char *src, size_t n);
 int strcmp(const char *s1, const char *s2);
 int strncmp(const char *s1, const char *s2, size_t n);
+char *strstr(char *str, char *substr);
 
-int main() {
+int main()
+{
     char string[] = "Hello World!";
     printf("String length: %ld\n", strlen(string));
 
@@ -18,7 +20,7 @@ int main() {
 
     printf("String length with max length %ld: %ld\n", ml, strnlen(string, ml));
     printf("String length with max length %ld: %ld\n", ml2, strnlen(string, ml2));
-    
+
     char copyStr[50];
     printf("%s\n", strcpy(copyStr, string));
 
@@ -34,32 +36,46 @@ int main() {
 
     printf("%d\n", strncmp(copyStr2, copyStr, 7));
 
+    const char s1[] = "The quick brown fox";
+    const char s2[] = "alabala";
+
+    if (strstr(s1, s2) != NULL)
+        printf("%s\n", strstr(s1, s2));
+    else
+        printf("Substring not found in string\n");
+
     return 0;
 }
- 
-size_t strlen(char *str) {
+
+size_t strlen(char *str)
+{
     size_t res = 0;
-    while (*str != '\0') {
+    while (*str != '\0')
+    {
         res++;
         str++;
     }
     return res;
 }
 
-size_t strnlen(char *str, size_t maxlen) {
+size_t strnlen(char *str, size_t maxlen)
+{
     size_t res = 0;
-    while (*str != '\0' && res < maxlen) {
+    while (*str != '\0' && res < maxlen)
+    {
         res++;
         str++;
     }
     return res;
 }
 
-char *strcpy(char *dest, const char *src) {
+char *strcpy(char *dest, const char *src)
+{
     if (dest == NULL)
         return NULL;
     char *ptr = dest;
-    while (*src != '\0') {
+    while (*src != '\0')
+    {
         *dest = *src;
         dest++;
         src++;
@@ -68,18 +84,20 @@ char *strcpy(char *dest, const char *src) {
     return ptr;
 }
 
-char *strncpy(char *dest, const char *src, size_t n) {
+char *strncpy(char *dest, const char *src, size_t n)
+{
     if (dest == NULL)
         return NULL;
     size_t i;
     for (i = 0; i < n && src[i] != '\0'; i++)
         dest[i] = src[i];
-    for ( ; i < n; i++)
+    for (; i < n; i++)
         dest[i] = '\0';
     return dest;
 }
 
-char *strcat(char *dest, const char *src) {
+char *strcat(char *dest, const char *src)
+{
     size_t dest_len = strlen(dest);
     size_t i;
     for (i = 0; i < strlen(src); i++)
@@ -88,7 +106,8 @@ char *strcat(char *dest, const char *src) {
     return dest;
 }
 
-char *strncat(char *dest, const char *src, size_t n) {
+char *strncat(char *dest, const char *src, size_t n)
+{
     size_t dest_len = strlen(dest);
     size_t i;
     for (i = 0; i < n && src[i] != '\0'; i++)
@@ -97,16 +116,20 @@ char *strncat(char *dest, const char *src, size_t n) {
     return dest;
 }
 
-int strcmp(const char *s1, const char *s2) {
-    while (*s1 && (*s1 == *s2)) {
+int strcmp(const char *s1, const char *s2)
+{
+    while (*s1 && (*s1 == *s2))
+    {
         s1++;
         s2++;
     }
     return *s1 - *s2;
 }
 
-int strncmp(const char *s1, const char *s2, size_t n) {
-    while (n && *s1 && (*s1 == *s2)) {
+int strncmp(const char *s1, const char *s2, size_t n)
+{
+    while (n && *s1 && (*s1 == *s2))
+    {
         s1++;
         s2++;
         n--;
@@ -117,3 +140,16 @@ int strncmp(const char *s1, const char *s2, size_t n) {
         return *s1 - *s2;
 }
 
+char *strstr(char *str, char *substr)
+{
+    while (*str)
+    {
+        if (*str && *substr && *str == *substr)
+        {
+            return str;
+        }
+        str++;
+        substr++;
+    }
+    return NULL;
+}
