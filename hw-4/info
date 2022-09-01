@@ -7,3 +7,10 @@ Homework #4:
 - Problem 3 - strings functions:
   - strlen
   - strnlen
+  - strcpy
+  - strncpy
+  - strcat
+  - strncat
+  - strcmp
+  - strncmp
+  - strstr
