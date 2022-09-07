@@ -43,7 +43,6 @@ int main(){
 
     printf("List size: %ld\n", listSize(&head));
     
-    listFree(&head); // head = NULL;
     if (NULL == head){
         printf("List is empty!\n");
     } else {
