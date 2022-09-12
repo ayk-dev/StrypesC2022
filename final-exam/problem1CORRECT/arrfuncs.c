@@ -28,6 +28,7 @@ unsigned lowercaseCount(char *arr, unsigned size) {
     return count;
 }
 
+//This function was written on 12/9 21-21:30.
 char mostCommonSym(char *arr, unsigned size) {
     int maxCount = 0;
     int max_idx = 0;
