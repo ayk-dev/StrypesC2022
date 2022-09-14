@@ -7,16 +7,11 @@ unsigned char isOneBitSet (uint16_t uValue);
 int main (){
     uint16_t num = 0x0400;
     uint16_t num2 = 0x0600;
+    uint16_t num3 = 0x0000;
 
-    if (isOneBitSet(num))
-        printf("0x01\n");
-    else
-        printf("0x00\n");
-
-    if (isOneBitSet(num2))
-        printf("0x01\n");
-    else
-        printf("0x00\n");
+    printf("%d\n", isOneBitSet(num));
+    printf("%d\n", isOneBitSet(num2));
+    printf("%d\n", isOneBitSet(num3));
 
     return 0;
 }
@@ -35,8 +30,7 @@ unsigned char isOneBitSet (uint16_t uValue) {
             counter++;
     }
     if (counter == 1)
-        return 1;
+        return 0x01;
     else
-        return 0;
+        return 0x00;
 }
-
