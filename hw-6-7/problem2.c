@@ -36,7 +36,7 @@ void Reverse(char *ptr) {
     size_t length = strLen(ptr);
     for (int i = 0; i < (int)(length / 2); i++) {
         char temp = ptr[i];
-        ptr[i] = *(ptr + (length - 1 - i));
+        ptr[i] = ptr[length - 1 - i];
         ptr[length - 1 - i] = temp;
     }
 }
