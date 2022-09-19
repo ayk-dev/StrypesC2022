@@ -17,11 +17,11 @@ int Pop(buffer_t *rb, int *value);
 void Free(buffer_t *rb);
 	
 int main() {
-	buffer_t * circBuff = (buffer_t *)malloc(MAX_SIZE * sizeof(buffer_t));
+	buffer_t * circBuff = malloc(MAX_SIZE * sizeof(buffer_t));
 	circBuff->maxSize = MAX_SIZE;
     circBuff->top = 0;
     circBuff->bottom = 0;
-    circBuff->ringBuff = (int *)malloc(MAX_SIZE * sizeof(int));
+    circBuff->ringBuff = malloc(MAX_SIZE * sizeof(int));
 
     printf("%d\n", isEmpty(circBuff));
     printf("%d\n", isFull(circBuff));
@@ -48,7 +48,7 @@ int isFull(buffer_t *rb) {
 	return abs((rb->top + 1) - rb->bottom);
 }
 	
-void Push(buffer_t *rb, int newValue) {
+void Push(buffer_t * rb, int newValue) {
 	int next;
 	next = rb->top + 1;
 	
