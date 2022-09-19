@@ -4,7 +4,7 @@
 #define MAX_SIZE 5
 	
 typedef struct {
-	int * const ringBuff;
+	int * ringBuff;
 	int top;
 	int bottom;
 	int maxSize;
@@ -17,21 +17,24 @@ int Pop(buffer_t *rb, int *value);
 void Free(buffer_t *rb);
 	
 int main() {
-	buffer_t *circBuff = malloc(MAX_SIZE * sizeof(int));
+	buffer_t * circBuff = (buffer_t *)malloc(MAX_SIZE * sizeof(buffer_t));
 	circBuff->maxSize = MAX_SIZE;
     circBuff->top = 0;
     circBuff->bottom = 0;
+    circBuff->ringBuff = (int *)malloc(MAX_SIZE * sizeof(int));
 
     printf("%d\n", isEmpty(circBuff));
     printf("%d\n", isFull(circBuff));
-    
-    // Push function is not working
+
     Push(circBuff, 5);
     Push(circBuff, 10);
     Push(circBuff, 15);
 
     printf("%d\n", circBuff->top);
     printf("%d\n", circBuff->bottom);
+
+    printf("%d\n", isEmpty(circBuff));
+    printf("%d\n", isFull(circBuff));
 	
 	Free(circBuff);
 	return 0;
