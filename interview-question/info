@@ -1,0 +1,5 @@
+Interview question
+int A[]
+Find i, j, k, l if
+i>j>k>l and 
+A[i] - A[j] + A[k] + A[l] = Max sum
